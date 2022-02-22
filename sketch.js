@@ -17,8 +17,6 @@ function setup() {
   x = width / 2;
   y = height / 2;
   // circle(x,y,3);
-  firstX = x;
-  firstY = y;
   secondX = x;
   secondY = y;
   
@@ -29,12 +27,12 @@ function draw() {
     textAlign(CENTER,CENTER);
     textSize(tSize);
     fill(255);
-    strokeWeight(1)
     text(num, secondX, secondY);
 }
 
 function mousePressed() {
-
+firstX = secondX;
+firstY = secondY;
   switch (state){    
     case 0:
       secondX += stepSize;
@@ -58,7 +56,10 @@ function mousePressed() {
     }
   }
 
-  num++;  
+  num++;
+  strokeWeight(1);
+  stroke(255);
+  line(firstX, firstY, secondX, secondY);  
 
   console.log("Num: " + num);
   console.log("State: " + state + " Step: " + step);
