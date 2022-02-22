@@ -24,6 +24,7 @@ function setup() {
 }
 
 function draw() {
+
     textAlign(CENTER,CENTER);
     textSize(tSize);
     fill(255);
@@ -31,6 +32,9 @@ function draw() {
 }
 
 function mousePressed() {
+if (num < 25){
+
+
 firstX = secondX;
 firstY = secondY;
   switch (state){    
@@ -57,11 +61,13 @@ firstY = secondY;
   }
 
   num++;
-  strokeWeight(1);
+  strokeWeight(2);
   stroke(255);
   line(firstX, firstY, secondX, secondY);  
 
   console.log("Num: " + num);
   console.log("State: " + state + " Step: " + step);
-  // redraw();  
+  // redraw(); 
+
+  } 
 }// --- mousePressed Ende ---
