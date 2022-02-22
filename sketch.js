@@ -19,10 +19,8 @@ function setup() {
   y = height / 2;
   // circle(x,y,3);
   secondX = x;
-  secondY = y;
-  
-  // noLoop();
-}
+  secondY = y;  
+}// setup() Ende ---
 
 function draw() {
 
@@ -38,12 +36,12 @@ function draw() {
       circle(secondX,secondY,5);
     }
     runForrest();
-}
+}// draw() Ende ---
 
 function mousePressed() {
   mouseIsOn = !mouseIsOn;
    
-}// --- mousePressed Ende ---
+}// --- mousePressed() Ende ---
 
 function istPrime(Zahl){
   if (Zahl == 1) return false;
@@ -53,7 +51,7 @@ function istPrime(Zahl){
     }
   }
   return true;
-}
+}// --- istPrime() Ende ---
 
 function runForrest(){
   if (mouseIsOn){
@@ -73,7 +71,6 @@ function runForrest(){
         secondY += stepSize;
         break;
     }
-
     if (num % step == 0){
       state = (state + 1) % 4;
       turnCounter++;
@@ -81,15 +78,14 @@ function runForrest(){
         step++;
       }
     }
-
     num++;
-    strokeWeight(1);
+    push();
+    strokeCap(SQUARE);
+    strokeWeight(0.5);
     stroke(255);
     line(firstX, firstY, secondX, secondY);  
-
+    pop();
     console.log("Num: " + num);
     console.log("State: " + state + " Step: " + step);
-    // redraw(); 
-
   }
-}
+}// --- runForrest() Ende ---
