@@ -3,7 +3,7 @@ let firstX = 0;
 let secondX = 0;
 let firstY = 0;
 let secondY = 0;
-let stepSize = 20;
+let stepSize = 5;
 let step = 1;
 let turnCounter = 1;
 let state = 0;
@@ -31,10 +31,12 @@ function draw() {
     noStroke();
     if (istPrime(num)){
       fill(255,0,0);
-    }else{
-      fill(255);
+    // }else{
+    //   fill(255);
+    // }
+      // text(num, secondX, secondY);
+      circle(secondX,secondY,5);
     }
-    text(num, secondX, secondY);
     runForrest();
 }
 
@@ -81,7 +83,7 @@ function runForrest(){
     }
 
     num++;
-    
+    strokeWeight(1);
     stroke(255);
     line(firstX, firstY, secondX, secondY);  
 
