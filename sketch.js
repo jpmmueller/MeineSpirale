@@ -4,7 +4,7 @@ let secondX = 0;
 let firstY = 0;
 let secondY = 0;
 let stepSize = 100;
-let step = 0;
+let step = 1;
 let turnCounter = 1;
 let state = 0;
 let num = 1;
@@ -57,6 +57,7 @@ function mousePressed() {
       step++;
     }
   }
+
   num++;  
 
   console.log("Num: " + num);
