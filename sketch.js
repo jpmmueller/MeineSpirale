@@ -3,13 +3,14 @@ let firstX = 0;
 let secondX = 0;
 let firstY = 0;
 let secondY = 0;
-let stepSize = 100;
+let stepSize = 20;
 let step = 1;
 let turnCounter = 1;
 let state = 0;
 let num = 1;
 let tSize = 64;
 let numSteps = 0;
+let mouseIsOn = false;
 
 function setup() {
   createCanvas(500, 500);
@@ -26,48 +27,67 @@ function setup() {
 function draw() {
 
     textAlign(CENTER,CENTER);
-    textSize(tSize);
-    fill(255);
+    textSize(stepSize / 2);
+    noStroke();
+    if (istPrime(num)){
+      fill(255,0,0);
+    }else{
+      fill(255);
+    }
     text(num, secondX, secondY);
+    runForrest();
 }
 
 function mousePressed() {
-if (num < 25){
+  mouseIsOn = !mouseIsOn;
+   
+}// --- mousePressed Ende ---
 
-
-firstX = secondX;
-firstY = secondY;
-  switch (state){    
-    case 0:
-      secondX += stepSize;
-      break;
-    case 1:
-      secondY -= stepSize;
-      break;
-    case 2:
-      secondX -= stepSize;
-      break;
-    case 3:
-      secondY += stepSize;
-      break;
-  }
-
-  if (num % step == 0){
-    state = (state + 1) % 4;
-    turnCounter++;
-    if (turnCounter % 2 == 0){
-      step++;
+function istPrime(Zahl){
+  if (Zahl == 1) return false;
+  for (let i = 2; i <= sqrt(Zahl); i++) {
+    if (Zahl % i == 0) {
+      return false;
     }
   }
+  return true;
+}
 
-  num++;
-  strokeWeight(2);
-  stroke(255);
-  line(firstX, firstY, secondX, secondY);  
+function runForrest(){
+  if (mouseIsOn){
+    firstX = secondX;
+    firstY = secondY;
+    switch (state){    
+      case 0:
+        secondX += stepSize;
+        break;
+      case 1:
+        secondY -= stepSize;
+        break;
+      case 2:
+        secondX -= stepSize;
+        break;
+      case 3:
+        secondY += stepSize;
+        break;
+    }
 
-  console.log("Num: " + num);
-  console.log("State: " + state + " Step: " + step);
-  // redraw(); 
+    if (num % step == 0){
+      state = (state + 1) % 4;
+      turnCounter++;
+      if (turnCounter % 2 == 0){
+        step++;
+      }
+    }
 
-  } 
-}// --- mousePressed Ende ---
+    num++;
+    
+    stroke(255);
+    line(firstX, firstY, secondX, secondY);  
+
+    console.log("Num: " + num);
+    console.log("State: " + state + " Step: " + step);
+    // redraw(); 
+
+  }
+}
